@@ -26,3 +26,8 @@ node_modules/
 # API
 /api/node_modules/
 /api/dist/
+
+# Environments (Deep)
+app/src/environments/environment.ts
+app/src/environments/environment.prod.ts
+app/.env
