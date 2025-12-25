@@ -15,7 +15,7 @@ Charge360 is a comprehensive Electric Vehicle (EV) charging station management p
     -   **Wallet:** View earnings and manage payouts via Stripe Express.
     -   **Onboarding:** Easy business onboarding flow.
 
-## 🛠 Tech Stack
+## Tech Stack
 
 ### Frontend (Mobile App)
 -   **Framework:** [Ionic Framework 8](https://ionicframework.com/)
