@@ -1,0 +1,17 @@
+{
+    "name": "charge360-api",
+    "version": "1.0.0",
+    "scripts": {
+        "build": "echo 'No build step required'"
+    },
+    "dependencies": {
+        "firebase-admin": "^11.11.0",
+        "stripe": "^14.5.0",
+        "cors": "^2.8.5"
+    },
+    "devDependencies": {
+        "@types/node": "^20.0.0",
+        "@vercel/node": "^3.0.0",
+        "typescript": "^5.0.0"
+    }
+}

@@ -1,0 +1,28 @@
+# General
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.log
+*.swp
+*.swo
+
+# Dependencies
+node_modules/
+
+# Environments
+.env
+.env.local
+.env.*.local
+
+# Vercel
+.vercel
+
+# Ionic/Angular (referenced from app/.gitignore)
+/app/www/
+/app/dist/
+/app/.angular/
+
+# API
+/api/node_modules/
+/api/dist/
