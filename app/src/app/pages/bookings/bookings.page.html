@@ -1,0 +1,39 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>My Bookings</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+
+  <div *ngIf="bookings$ | async as bookings; else loading">
+    <div *ngIf="bookings.length === 0" class="empty-state">
+      <ion-icon name="calendar-outline"></ion-icon>
+      <h3>No Bookings Yet</h3>
+      <p>Find a station and book your first charge!</p>
+    </div>
+
+    <ion-card *ngFor="let booking of bookings" class="booking-card">
+      <ion-card-header>
+        <div class="status" [class]="booking.status">
+          {{ booking.status | titlecase }}
+        </div>
+        <ion-card-title>{{ booking.stationName }}</ion-card-title>
+        <ion-card-subtitle>{{ booking.startTime | date:'medium' }}</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <div class="details">
+          <p>{{ booking.durationHours }} Hours</p>
+          <p class="amount">${{ booking.totalAmount | number:'1.2-2' }}</p>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <ng-template #loading>
+    <div class="ion-text-center ion-padding">
+      <ion-spinner></ion-spinner>
+    </div>
+  </ng-template>
+
+</ion-content>

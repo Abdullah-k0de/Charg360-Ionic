@@ -1,0 +1,94 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Business Dashboard</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+
+  <!-- Guest/User View (Not allowed) -->
+  <div *ngIf="(user$ | async)?.role !== 'business'" class="empty-state">
+    <ion-icon name="briefcase-outline"></ion-icon>
+    <h3>Business Only</h3>
+    <p>Sign in as a Business to manage stations and view earnings.</p>
+  </div>
+
+  <!-- Business View -->
+  <div *ngIf="(user$ | async)?.role === 'business'">
+
+    <!-- Wallet Card -->
+    <ion-card class="wallet-card">
+      <ion-card-content>
+        <p>Current Balance</p>
+        <h1>${{ balance | number:'1.2-2' }}</h1>
+        <ion-button expand="block" color="light" (click)="withdrawFunds()">
+          <ion-icon name="cash-outline" slot="start"></ion-icon>
+          Withdraw Funds
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- Incoming Bookings -->
+    <div class="section-header">
+      <h3>Incoming Bookings</h3>
+    </div>
+
+    <ion-list lines="none" class="bookings-list">
+      <div *ngFor="let booking of incomingBookings$ | async">
+        <ion-card class="booking-item">
+          <ion-item lines="none">
+            <ion-icon name="calendar-outline" slot="start" color="primary"></ion-icon>
+            <ion-label>
+              <h2>{{ booking.stationName }}</h2>
+              <p>{{ booking.startTime | date:'short' }}</p>
+              <p>User ID: {{ booking.userId | slice:0:6 }}...</p>
+            </ion-label>
+            <ion-badge slot="end" color="success">${{ booking.totalAmount }}</ion-badge>
+          </ion-item>
+        </ion-card>
+      </div>
+      <div *ngIf="(incomingBookings$ | async)?.length === 0" class="no-data">
+        <p>No new bookings yet.</p>
+      </div>
+    </ion-list>
+
+    <!-- My Stations -->
+    <div class="section-header">
+      <h3>My Stations</h3>
+      <ion-button fill="clear" size="small" (click)="addNewStation()">
+        <ion-icon name="add-circle" slot="start"></ion-icon> Add New
+      </ion-button>
+    </div>
+
+    <ion-list lines="none">
+      <div *ngFor="let station of myStations$ | async">
+        <ion-card class="station-item">
+          <div class="img-thumb">
+            <img [src]="station.images[0] || 'assets/placeholder-station.jpg'">
+          </div>
+          <div class="info">
+            <h4>{{ station.name }}</h4>
+            <div class="status-row">
+              <ion-badge [color]="station.status === 'open' ? 'success' : 'medium'">
+                {{ station.status }}
+              </ion-badge>
+              <span class="views">142 views</span>
+            </div>
+          </div>
+          <div class="actions">
+            <ion-button fill="clear" (click)="editStation(station)">
+              <ion-icon name="create-outline"></ion-icon>
+            </ion-button>
+          </div>
+        </ion-card>
+      </div>
+    </ion-list>
+
+    <div *ngIf="(myStations$ | async)?.length === 0" class="no-stations">
+      <p>You haven't added any stations yet.</p>
+      <ion-button (click)="addNewStation()">List Your First Station</ion-button>
+    </div>
+
+  </div>
+
+</ion-content>

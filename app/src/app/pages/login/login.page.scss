@@ -1,0 +1,140 @@
+ion-content {
+    --background: #ffffff;
+}
+
+.login-container {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 40px 24px;
+    background: linear-gradient(180deg, #ffffff 0%, #f4f6fa 100%);
+}
+
+.header-section {
+    text-align: center;
+    margin-bottom: 32px;
+
+    .logo-box {
+        width: 64px;
+        height: 64px;
+        background: var(--ion-color-primary);
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 16px;
+        box-shadow: 0 10px 20px rgba(0, 102, 204, 0.3);
+
+        ion-icon {
+            font-size: 32px;
+            color: white;
+        }
+    }
+
+    h1 {
+        font-size: 28px;
+        font-weight: 800;
+        color: var(--ion-color-dark);
+        margin: 0 0 8px;
+        letter-spacing: -1px;
+    }
+
+    p {
+        font-size: 15px;
+        color: var(--ion-color-medium);
+        margin: 0;
+    }
+}
+
+.segment-wrapper {
+    background: #f0f2f5;
+    padding: 4px;
+    border-radius: 12px;
+    margin-bottom: 32px;
+
+    ion-segment {
+        --background: transparent;
+    }
+}
+
+.form-card {}
+
+.clean-input {
+    --background: #ffffff;
+    --border-radius: 12px;
+    --border-color: #e0e0e0;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.01);
+}
+
+.main-btn {
+    margin-top: 24px;
+    height: 50px;
+    --box-shadow: 0 8px 16px rgba(0, 102, 204, 0.25);
+    font-size: 16px;
+}
+
+.auth-toggle {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin-bottom: 24px;
+
+    span {
+        font-size: 16px;
+        color: var(--ion-color-medium);
+        font-weight: 600;
+        cursor: pointer;
+        transition: 0.2s;
+        padding-bottom: 4px;
+
+        &.active {
+            color: var(--ion-color-dark);
+            border-bottom: 2px solid var(--ion-color-primary);
+        }
+    }
+}
+
+.divider {
+    text-align: center;
+    margin: 24px 0;
+    display: flex;
+    align-items: center;
+
+    &::before,
+    &::after {
+        content: '';
+        flex: 1;
+        height: 1px;
+        background: #e0e0e0;
+    }
+
+    span {
+        padding: 0 12px;
+        font-size: 12px;
+        color: var(--ion-color-medium);
+        font-weight: 600;
+    }
+}
+
+.guest-btn {
+    height: 50px;
+    --border-color: #e0e0e0;
+    --color: var(--ion-color-dark);
+}
+
+.animate-fade {
+    animation: fadeUp 0.4s ease-out;
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

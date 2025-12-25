@@ -1,0 +1,30 @@
+<ion-tabs>
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button tab="home">
+      <ion-icon name="home"></ion-icon>
+      <ion-label>Home</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="bookings">
+      <ion-icon name="calendar"></ion-icon>
+      <ion-label>Bookings</ion-label>
+    </ion-tab-button>
+
+    <!-- Business: Wallet -->
+    <ion-tab-button tab="wallet" *ngIf="(authService.user$ | async)?.role === 'business'">
+      <ion-icon name="wallet"></ion-icon>
+      <ion-label>Wallet</ion-label>
+    </ion-tab-button>
+
+    <!-- User/Guest: Subscription -->
+    <ion-tab-button tab="subscription" *ngIf="(authService.user$ | async)?.role !== 'business'">
+      <ion-icon name="star"></ion-icon>
+      <ion-label>Plans</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="profile">
+      <ion-icon name="person"></ion-icon>
+      <ion-label>Profile</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs>

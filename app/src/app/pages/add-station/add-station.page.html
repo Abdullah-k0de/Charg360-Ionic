@@ -1,0 +1,45 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Add Station</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+
+  <div class="form-header">
+    <h2>List your station</h2>
+    <p>Earn money by sharing your EV charger.</p>
+  </div>
+
+  <ion-list lines="none">
+    <ion-item class="input-item" fill="outline" mode="md">
+      <ion-label position="floating">Station Name</ion-label>
+      <ion-input [(ngModel)]="station.name" placeholder="e.g. Downtown Fast Charger"></ion-input>
+    </ion-item>
+
+    <ion-item class="input-item" fill="outline" mode="md">
+      <ion-label position="floating">Address</ion-label>
+      <ion-input [(ngModel)]="station.address" placeholder="e.g. 123 Main St"></ion-input>
+    </ion-item>
+
+    <ion-item class="input-item" fill="outline" mode="md">
+      <ion-label position="floating">Price per Hour ($)</ion-label>
+      <ion-input type="number" [(ngModel)]="station.pricePerHour"></ion-input>
+    </ion-item>
+
+    <ion-item class="input-item" fill="outline" mode="md">
+      <ion-label position="floating">Charging Points</ion-label>
+      <ion-input type="number" [(ngModel)]="station.chargingPoints"></ion-input>
+    </ion-item>
+  </ion-list>
+
+  <div class="ion-padding-top">
+    <ion-button expand="block" shape="round" (click)="submitStation()">
+      Create Station
+    </ion-button>
+  </div>
+
+</ion-content>

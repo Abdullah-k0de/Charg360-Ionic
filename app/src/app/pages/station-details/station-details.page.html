@@ -1,0 +1,113 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="light">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Details</ion-title>
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon name="heart-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" *ngIf="station">
+
+  <!-- Image Slider -->
+  <div class="image-header">
+    <img [src]="station.images?.[0] || 'assets/placeholder-station.jpg'" alt="Station Image">
+    <div class="badge-overlay">
+      <ion-badge color="success" *ngIf="station.status === 'open'">Open</ion-badge>
+      <ion-badge color="danger" *ngIf="station.status === 'closed'">Closed</ion-badge>
+    </div>
+  </div>
+
+  <div class="content-container">
+    <div class="header-info">
+      <h1>{{ station.name }}</h1>
+      <p class="address">
+        <ion-icon name="location-outline"></ion-icon>
+        {{ station.address }}
+      </p>
+
+      <div class="tags">
+        <ion-badge color="light" *ngFor="let tag of station.tags">{{ tag }}</ion-badge>
+        <ion-badge color="light">{{ station.chargingPoints }} Plugs</ion-badge>
+      </div>
+    </div>
+
+    <div class="specs">
+      <div class="spec-item">
+        <span>Price</span>
+        <strong>${{ station.pricePerHour }}/hr</strong>
+      </div>
+      <div class="spec-item">
+        <span>Type</span>
+        <strong>Type 2</strong>
+      </div>
+      <div class="spec-item">
+        <span>Power</span>
+        <strong>22kW</strong>
+      </div>
+    </div>
+
+    <!-- Booking Controls -->
+    <div class="booking-section">
+      <h3>Book a slot</h3>
+
+      <ion-item lines="none" class="date-picker">
+        <ion-label>Date</ion-label>
+        <ion-datetime-button datetime="datetime"></ion-datetime-button>
+        <ion-modal [keepContentsMounted]="true">
+          <ng-template>
+            <ion-datetime id="datetime" presentation="date-time" [(ngModel)]="selectedDate"></ion-datetime>
+          </ng-template>
+        </ion-modal>
+      </ion-item>
+
+      <div class="duration-control">
+        <ion-label>Duration (Hours)</ion-label>
+        <div class="stepper">
+          <ion-button fill="outline" (click)="duration = duration > 1 ? duration - 1 : 1">
+            <ion-icon name="remove"></ion-icon>
+          </ion-button>
+          <span>{{ duration }} hr</span>
+          <ion-button fill="outline" (click)="duration = duration + 1">
+            <ion-icon name="add"></ion-icon>
+          </ion-button>
+        </div>
+      </div>
+
+      <!-- Guest Contact Info -->
+      <div class="guest-info" *ngIf="(authService.user$ | async)?.role === 'guest'">
+        <h3>Contact Details</h3>
+        <ion-item fill="outline" mode="md" class="input-item">
+          <ion-label position="floating">Full Name</ion-label>
+          <ion-input [(ngModel)]="guestName"></ion-input>
+        </ion-item>
+        <ion-item fill="outline" mode="md" class="input-item">
+          <ion-label position="floating">Phone Number</ion-label>
+          <ion-input type="tel" [(ngModel)]="guestPhone"></ion-input>
+        </ion-item>
+      </div>
+
+    </div>
+
+  </div>
+
+</ion-content>
+
+<ion-footer class="ion-no-border" *ngIf="station">
+  <ion-toolbar>
+    <div class="footer-inner">
+      <div class="price">
+        <span>Total</span>
+        <h2>${{ totalCost | number:'1.2-2' }}</h2>
+      </div>
+      <ion-button expand="block" shape="round" color="primary" (click)="bookNow()">
+        Confirm Booking
+      </ion-button>
+    </div>
+  </ion-toolbar>
+</ion-footer>

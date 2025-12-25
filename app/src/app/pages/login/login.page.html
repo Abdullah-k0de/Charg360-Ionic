@@ -1,0 +1,79 @@
+<ion-content [fullscreen]="true">
+  <div class="login-container">
+
+    <div class="header-section">
+      <div class="logo-box">
+        <ion-icon name="flash"></ion-icon>
+      </div>
+      <h1>Charge360</h1>
+      <p>Seamless EV Charging for Everyone</p>
+    </div>
+
+    <!-- Segment -->
+    <div class="segment-wrapper">
+      <ion-segment [(ngModel)]="mode" mode="ios">
+        <ion-segment-button value="driver">
+          <ion-label>Driver</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="business">
+          <ion-label>Business</ion-label>
+        </ion-segment-button>
+      </ion-segment>
+    </div>
+
+    <div class="form-card">
+
+      <!-- Driver Mode -->
+      <div *ngIf="mode === 'driver'" class="driver-section animate-fade">
+        <div class="otp-mock">
+          <ion-item fill="outline" mode="md" class="clean-input">
+            <ion-label position="floating">Phone Number</ion-label>
+            <ion-input type="tel"></ion-input>
+          </ion-item>
+          <ion-button expand="block" (click)="loginAnonymously()" class="main-btn">
+            Send OTP <ion-icon name="arrow-forward" slot="end"></ion-icon>
+          </ion-button>
+
+          <div class="divider">
+            <span>OR</span>
+          </div>
+
+          <ion-button expand="block" fill="outline" (click)="loginAnonymously()" class="guest-btn">
+            Continue as Guest
+          </ion-button>
+        </div>
+      </div>
+
+      <!-- Business Mode -->
+      <div *ngIf="mode === 'business'" class="business-section animate-fade">
+        <div class="auth-toggle">
+          <span [class.active]="isLogin" (click)="isLogin = true">Login</span>
+          <span [class.active]="!isLogin" (click)="isLogin = false">Sign Up</span>
+        </div>
+
+        <div class="input-group">
+          <ion-item *ngIf="!isLogin" fill="outline" mode="md" class="clean-input">
+            <ion-label position="floating">Business Name</ion-label>
+            <ion-input [(ngModel)]="email"></ion-input> <!-- reusing var for name mock -->
+          </ion-item>
+
+          <ion-item fill="outline" mode="md" class="clean-input">
+            <ion-label position="floating">Email Address</ion-label>
+            <ion-input [(ngModel)]="email" type="email"></ion-input>
+          </ion-item>
+
+          <ion-item fill="outline" mode="md" class="clean-input">
+            <ion-label position="floating">Password</ion-label>
+            <ion-input [(ngModel)]="password" type="password"></ion-input>
+          </ion-item>
+        </div>
+
+        <ion-button expand="block" (click)="handleBusinessAuth()" class="main-btn">
+          {{ isLogin ? 'Login to Dashboard' : 'Create Business Account' }}
+        </ion-button>
+      </div>
+
+    </div>
+
+  </div>
+</ion-content>

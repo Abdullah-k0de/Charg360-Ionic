@@ -1,0 +1,54 @@
+<ion-header class="ion-no-border">
+  <div class="home-header-bg">
+    <div class="greeting">
+      <div class="role-row">
+        <h2>Hello, {{ (user$ | async)?.name || 'Guest' }} 👋</h2>
+        <div>
+          <ion-button fill="clear" size="small" (click)="logout()">
+            <ion-icon name="log-out-outline" slot="icon-only"></ion-icon>
+          </ion-button>
+        </div>
+      </div>
+      <p>Let's find a place to charge.</p>
+    </div>
+  </div>
+  <div class="search-section">
+    <ion-searchbar placeholder="Search by location..." inputmode="search" [(ngModel)]="searchTerm"
+      (ionChange)="filterStations()"></ion-searchbar>
+  </div>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <div class="section-header">
+    <h3>Nearby Stations</h3>
+  </div>
+
+  <div *ngFor="let station of stations$ | async">
+    <ion-card class="station-card" (click)="goToStation(station)" button="true">
+      <div class="card-img">
+        <img [src]="station.images[0] || 'assets/placeholder-station.jpg'" />
+        <div class="status-badge" [class]="station.status">
+          {{ station.status }}
+        </div>
+      </div>
+
+      <ion-card-header>
+        <ion-card-subtitle>${{ station.pricePerHour }}/hr</ion-card-subtitle>
+        <ion-card-title>{{ station.name }}</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <div class="meta">
+          <span><ion-icon name="location-outline"></ion-icon> 0.8 mi</span>
+          <span><ion-icon name="flash-outline"></ion-icon> {{ station.chargingPoints }} Plugs</span>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <div *ngIf="(stations$ | async)?.length === 0" class="ion-text-center ion-padding">
+    <p>No stations found nearby.</p>
+  </div>
+
+</ion-content>

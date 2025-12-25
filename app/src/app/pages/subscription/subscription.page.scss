@@ -1,0 +1,114 @@
+.header-text {
+    text-align: center;
+    margin-bottom: 24px;
+
+    h2 {
+        font-size: 28px;
+        font-weight: 800;
+        margin: 0 0 8px;
+        color: var(--ion-color-dark);
+    }
+
+    p {
+        color: var(--ion-color-medium);
+        margin: 0;
+    }
+}
+
+.plan-card {
+    border-radius: 20px;
+    overflow: visible;
+    margin-bottom: 24px;
+    transition: 0.3s transform;
+    border: 2px solid transparent;
+
+    &.active {
+        border-color: var(--ion-color-primary);
+        transform: scale(1.02);
+    }
+
+    ion-card-header {
+        text-align: center;
+        padding-bottom: 0;
+    }
+
+    ion-card-subtitle {
+        font-weight: 700;
+        letter-spacing: 1px;
+        margin-bottom: 8px;
+    }
+
+    ion-card-title {
+        font-size: 32px;
+        font-weight: 800;
+        color: var(--ion-color-dark);
+    }
+
+    .price {
+        text-align: center;
+        font-size: 40px;
+        font-weight: 800;
+        color: var(--ion-color-dark);
+        margin: 16px 0;
+
+        span {
+            font-size: 16px;
+            color: var(--ion-color-medium);
+            font-weight: 500;
+        }
+    }
+
+    .features {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 24px;
+
+        li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+            color: var(--ion-color-dark);
+            font-size: 14px;
+
+            ion-icon {
+                margin-right: 12px;
+                font-size: 18px;
+                color: var(--ion-color-success);
+            }
+        }
+    }
+
+    .plan-btn {
+        height: 48px;
+        font-size: 16px;
+    }
+}
+
+.plan-card.gold {
+    background: linear-gradient(135deg, #ffffff 0%, #f0f7ff 100%);
+    position: relative;
+    box-shadow: 0 12px 30px rgba(0, 102, 204, 0.15);
+
+    .badge {
+        position: absolute;
+        top: -12px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: var(--ion-color-primary);
+        color: white;
+        padding: 4px 12px;
+        border-radius: 12px;
+        font-size: 10px;
+        font-weight: 800;
+        letter-spacing: 0.5px;
+    }
+
+    ion-card-subtitle {
+        color: var(--ion-color-primary);
+    }
+
+    .features li ion-icon {
+        color: var(--ion-color-warning);
+        /* Gold stars */
+    }
+}

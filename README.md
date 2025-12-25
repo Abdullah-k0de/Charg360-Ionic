@@ -2,7 +2,7 @@
 
 Charge360 is a comprehensive Electric Vehicle (EV) charging station management platform. It consists of a cross-platform mobile application built with Ionic & Angular, and a serverless backend API hosted on Vercel.
 
-## 🚀 Features
+## Features
 
 -   **User Features:**
     -   **Find Stations:** Browse and locate EV charging stations.
@@ -28,7 +28,7 @@ Charge360 is a comprehensive Electric Vehicle (EV) charging station management p
 -   **Payments:** [Stripe](https://stripe.com/)
 -   **Database/Auth:** [Firebase](https://firebase.google.com/) (Admin SDK)
 
-## 📂 Project Structure
+## Project Structure
 
 ```
 Charge360/
@@ -44,7 +44,7 @@ Charge360/
 └── vercel.json     # Vercel deployment configuration
 ```
 
-## 🏁 Getting Started
+## Getting Started
 
 ### Prerequisites
 
@@ -71,7 +71,7 @@ Charge360/
     npm install
     ```
 
-## 🏃‍♂️ Running the Application
+## Running the Application
 
 ### Frontend (Ionic App)
 
@@ -102,7 +102,7 @@ npm install -g vercel
 vercel dev
 ```
 
-## 📦 Building for Production
+## Building for Production
 
 ### Android
 ```bash
@@ -118,7 +118,7 @@ ionic cap build ios
 ```
 Open the `ios` folder in Xcode to archive and publish.
 
-## 📝 Configuration
+## Configuration
 
 ### Environment Variables
 Ensure you set up your `.env` files or environment variables in your deployment platform (Vercel/Firebase) for:

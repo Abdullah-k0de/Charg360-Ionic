@@ -1,0 +1,53 @@
+<ion-header [translucent]="true" class="ion-no-border">
+  <ion-toolbar>
+    <ion-title>Upgrade Your Plan</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+
+  <div class="header-text">
+    <h2>Choose your tier</h2>
+    <p>Unlock more features with Gold membership.</p>
+  </div>
+
+  <!-- Free Plan -->
+  <ion-card class="plan-card free" [class.active]="currentPlan === 'free'" (click)="selectPlan('free')">
+    <ion-card-header>
+      <ion-card-subtitle>STARTER</ion-card-subtitle>
+      <ion-card-title>Free</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <div class="price">$0<span>/mo</span></div>
+      <ul class="features">
+        <li><ion-icon name="checkmark-circle"></ion-icon> Find Stations</li>
+        <li><ion-icon name="checkmark-circle"></ion-icon> Pay-as-you-go Charging</li>
+        <li><ion-icon name="checkmark-circle"></ion-icon> Basic Support</li>
+      </ul>
+      <ion-button expand="block" fill="outline" class="plan-btn">
+        {{ currentPlan === 'free' ? 'Current Plan' : 'Select Free' }}
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Gold Plan -->
+  <ion-card class="plan-card gold" [class.active]="currentPlan === 'gold'" (click)="selectPlan('gold')">
+    <div class="badge">RECOMMENDED</div>
+    <ion-card-header>
+      <ion-card-subtitle>PRO ACCESS</ion-card-subtitle>
+      <ion-card-title>Gold</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <div class="price">$9.99<span>/mo</span></div>
+      <ul class="features">
+        <li><ion-icon name="star"></ion-icon> No Booking Fees</li>
+        <li><ion-icon name="star"></ion-icon> 10% Discount on Charging</li>
+        <li><ion-icon name="star"></ion-icon> Priority Support 24/7</li>
+      </ul>
+      <ion-button expand="block" class="plan-btn">
+        {{ currentPlan === 'gold' ? 'Active Membership' : 'Upgrade Now' }}
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

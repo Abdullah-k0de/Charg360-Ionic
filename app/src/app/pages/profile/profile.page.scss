@@ -1,0 +1,62 @@
+.profile-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+    background: var(--ion-color-light);
+
+    .avatar-circle {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        background: var(--ion-color-primary);
+        color: white;
+        font-size: 32px;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 16px;
+
+        &.guest {
+            background: #ccc;
+        }
+    }
+
+    h2 {
+        margin: 0;
+        font-size: 20px;
+        font-weight: 700;
+    }
+
+    p {
+        margin: 4px 0 12px;
+        color: var(--ion-color-medium);
+    }
+
+    .role-badge {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+}
+
+.menu-list {
+    margin-top: 20px;
+
+    ion-list-header {
+        font-size: 14px;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        color: var(--ion-color-medium);
+    }
+
+    ion-item {
+        --padding-start: 20px;
+
+        ion-icon {
+            color: var(--ion-color-dark);
+            margin-right: 16px;
+        }
+    }
+}
